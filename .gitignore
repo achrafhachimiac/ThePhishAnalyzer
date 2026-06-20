@@ -1,0 +1,13 @@
+node_modules/
+build/
+dist/
+dist-server/
+storage/
+temp/
+coverage/
+.DS_Store
+*.log
+*.tgz
+*.zip
+.env*
+!.env.example
