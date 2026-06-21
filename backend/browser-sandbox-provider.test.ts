@@ -76,7 +76,7 @@ describe('buildBrowserSandboxAccess', () => {
         provider: 'local-novnc',
         accessMode: 'embedded',
         accessBaseUrl: null,
-        accessUrlTemplate: 'https://sandbox.example.test/novnc/:novncPort/vnc.html?autoconnect=1&resize=remote',
+        accessUrlTemplate: '/novnc/:novncPort/vnc.html?autoconnect=1&resize=remote',
         accessPathTemplate: ':jobId',
       },
       {
@@ -86,7 +86,7 @@ describe('buildBrowserSandboxAccess', () => {
     );
 
     expect(access.url).toBe(
-      'https://sandbox.example.test/novnc/7665/vnc.html?autoconnect=1&resize=remote&path=novnc%2F7665%2Fwebsockify',
+      '/novnc/7665/vnc.html?autoconnect=1&resize=remote&path=novnc%2F7665%2Fwebsockify',
     );
   });
 

@@ -725,7 +725,7 @@ function ParsedUrlList({
             <div key={`${url.originalUrl}-${url.decodedUrl}`}>
               {(() => {
                 const handoffDomain = extractDomainFromUrl(url.decodedUrl);
-                const showHandoffButtons = url.wrapperType === 'barracuda';
+                const showHandoffButtons = Boolean(onRouteToDomainAnalysis || onRouteToBrowserSandbox);
 
                 return (
               <SignalPanel tone={url.suspicious ? 'warning' : 'neutral'} className="p-3 text-xs space-y-2">
@@ -737,27 +737,31 @@ function ParsedUrlList({
                 <div className="break-all">Destination: {url.decodedUrl}</div>
                 {showHandoffButtons ? (
                   <div className="flex flex-wrap gap-2">
-                    <button
-                      type="button"
-                      disabled={!handoffDomain}
-                      onClick={() => {
-                        if (handoffDomain) {
-                          onRouteToDomainAnalysis?.(handoffDomain);
-                        }
-                      }}
-                      className="cli-button py-2 px-3 text-xs"
-                    >
-                      SEND TO DOMAIN ANALYSIS
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        onRouteToBrowserSandbox?.(url.decodedUrl);
-                      }}
-                      className="cli-button py-2 px-3 text-xs"
-                    >
-                      SEND TO URL SANDBOX
-                    </button>
+                    {onRouteToDomainAnalysis ? (
+                      <button
+                        type="button"
+                        disabled={!handoffDomain}
+                        onClick={() => {
+                          if (handoffDomain) {
+                            onRouteToDomainAnalysis(handoffDomain);
+                          }
+                        }}
+                        className="cli-button py-2 px-3 text-xs"
+                      >
+                        SEND TO DOMAIN ANALYSIS
+                      </button>
+                    ) : null}
+                    {onRouteToBrowserSandbox ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onRouteToBrowserSandbox(url.decodedUrl);
+                        }}
+                        className="cli-button py-2 px-3 text-xs"
+                      >
+                        SEND TO URL SANDBOX
+                      </button>
+                    ) : null}
                   </div>
                 ) : null}
                 {url.resolutionChain && url.resolutionChain.length > 0 ? (

@@ -964,7 +964,7 @@ describe('backend app', () => {
           },
           access: {
             mode: 'embedded',
-            url: 'https://sandbox.example.test/novnc/7601/vnc.html?autoconnect=1&resize=remote',
+            url: '/novnc/7601/vnc.html?autoconnect=1&resize=remote&path=novnc/7601/websockify',
             note: 'Live Chromium access is exposed through the local-novnc provider.',
           },
         },
@@ -986,13 +986,13 @@ describe('backend app', () => {
             },
             access: {
               mode: 'embedded',
-              url: 'https://sandbox.example.test/novnc/7601/vnc.html?autoconnect=1&resize=remote',
+              url: '/novnc/7601/vnc.html?autoconnect=1&resize=remote&path=novnc/7601/websockify',
               note: 'Live Chromium access is exposed through the local-novnc provider.',
             },
           },
           access: {
             mode: 'embedded',
-            url: 'https://sandbox.example.test/novnc/7601/vnc.html?autoconnect=1&resize=remote',
+            url: '/novnc/7601/vnc.html?autoconnect=1&resize=remote&path=novnc/7601/websockify',
             note: 'Live Chromium access is exposed through the local-novnc provider.',
           },
           screenshotPath: null,

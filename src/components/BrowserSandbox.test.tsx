@@ -56,13 +56,13 @@ describe('BrowserSandbox', () => {
               stoppedAt: null,
               access: {
                 mode: 'embedded',
-                url: 'https://sandbox.example.test/novnc/6161/vnc.html?autoconnect=1&resize=remote',
+                url: '/novnc/6161/vnc.html?autoconnect=1&resize=remote&path=novnc/6161/websockify',
                 note: 'Live Chromium access is exposed through the novnc provider.',
               },
             },
             access: {
               mode: 'embedded',
-              url: 'https://sandbox.example.test/novnc/6161/vnc.html?autoconnect=1&resize=remote',
+              url: '/novnc/6161/vnc.html?autoconnect=1&resize=remote&path=novnc/6161/websockify',
               note: 'Live Chromium access is exposed through the novnc provider.',
             },
             screenshotPath: 'storage/sandbox-sessions/sandbox_job_123/example-org.png',
@@ -209,9 +209,9 @@ describe('BrowserSandbox', () => {
     expect(screen.getByText(/linked file analysis/i)).toBeInTheDocument();
     expect(await screen.findByText(/archive contains suspicious executable content/i)).toBeInTheDocument();
     expect(screen.getByText(/provider note/i)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /open remote browser/i })).toHaveAttribute('href', 'https://sandbox.example.test/novnc/6161/vnc.html?autoconnect=1&resize=remote');
+    expect(screen.getByRole('link', { name: /open remote browser/i })).toHaveAttribute('href', '/novnc/6161/vnc.html?autoconnect=1&resize=remote&path=novnc/6161/websockify');
     expect(screen.getByRole('heading', { name: /live remote browser/i })).toBeInTheDocument();
-    expect(screen.getByTitle(/live remote browser session/i)).toHaveAttribute('src', 'https://sandbox.example.test/novnc/6161/vnc.html?autoconnect=1&resize=remote');
+    expect(screen.getByTitle(/live remote browser session/i)).toHaveAttribute('src', '/novnc/6161/vnc.html?autoconnect=1&resize=remote&path=novnc/6161/websockify');
     expect(screen.getByRole('slider')).toHaveValue('720');
     expect(screen.getByRole('button', { name: /full screen/i })).toBeInTheDocument();
     expect(screen.getByAltText(/sandbox screenshot preview/i)).toHaveAttribute('src', '/storage/sandbox-sessions/sandbox_job_123/example-org.png');
@@ -258,13 +258,13 @@ describe('BrowserSandbox', () => {
               stoppedAt: null,
               access: {
                 mode: 'embedded',
-                url: 'https://sandbox.example.test/novnc/6161/vnc.html?autoconnect=1&resize=remote',
+                url: '/novnc/6161/vnc.html?autoconnect=1&resize=remote&path=novnc/6161/websockify',
                 note: 'Live Chromium access is exposed through the novnc provider.',
               },
             },
             access: {
               mode: 'embedded',
-              url: 'https://sandbox.example.test/novnc/6161/vnc.html?autoconnect=1&resize=remote',
+              url: '/novnc/6161/vnc.html?autoconnect=1&resize=remote&path=novnc/6161/websockify',
               note: 'Live Chromium access is exposed through the novnc provider.',
             },
             screenshotPath: 'storage/sandbox-sessions/sandbox_job_copy/example-org.png',

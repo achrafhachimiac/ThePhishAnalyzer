@@ -236,6 +236,12 @@ describe('ThePhish', () => {
                 suspicious: true,
                 reason: 'Known credential harvesting pattern.',
               },
+              {
+                originalUrl: 'https://example.org/newsletter',
+                decodedUrl: 'https://example.org/newsletter',
+                suspicious: false,
+                reason: 'No high-confidence issue detected from the static checks.',
+              },
             ],
             inconsistencies: ['SPF failed for the sending domain.'],
             threatLevel: 'HIGH',
@@ -492,7 +498,7 @@ describe('ThePhish', () => {
         }),
       } as Response);
 
-    render(<ThePhish />);
+    render(<ThePhish onRouteToDomainAnalysis={vi.fn()} onRouteToBrowserSandbox={vi.fn()} />);
 
     const file = new File(['From: alerts@secure-example.test'], 'suspicious.eml', {
       type: 'message/rfc822',
@@ -515,6 +521,9 @@ describe('ThePhish', () => {
     expect(screen.getByText(/envelope sender ip is not authorized/i)).toBeInTheDocument();
     expect(screen.getByText(/observable inventory/i)).toBeInTheDocument();
     expect(screen.getByText(/destination: https:\/\/evil.example\/login/i)).toBeInTheDocument();
+    expect(screen.getByText(/destination: https:\/\/example.org\/newsletter/i)).toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: /send to domain analysis/i }).length).toBeGreaterThanOrEqual(2);
+    expect(screen.getAllByRole('button', { name: /send to url sandbox/i }).length).toBeGreaterThanOrEqual(2);
     expect(screen.getByText(/related domains/i)).toBeInTheDocument();
     expect(screen.getByText(/domain has phishing-related reputation signals/i)).toBeInTheDocument();
     expect(screen.getByText(/external analyzer results/i)).toBeInTheDocument();

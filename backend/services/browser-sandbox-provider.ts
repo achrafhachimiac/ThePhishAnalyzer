@@ -74,13 +74,18 @@ function interpolateAccessTemplate(template: string, context: BrowserSandboxProv
  */
 function ensureNoVncWebSocketPath(url: string): string {
   try {
-    const parsed = new URL(url);
+    const isRelativeUrl = !/^[a-z][a-z\d+.-]*:/i.test(url);
+    const parsed = new URL(url, 'https://local.invalid');
     if (!parsed.pathname.endsWith('/vnc.html') || parsed.searchParams.has('path')) {
       return url;
     }
     const directory = parsed.pathname.replace(/\/vnc\.html$/, '').replace(/^\/+/, '');
     if (directory) {
       parsed.searchParams.set('path', `${directory}/websockify`);
+    }
+    if (isRelativeUrl) {
+      const query = parsed.searchParams.toString();
+      return `${parsed.pathname}${query ? `?${query}` : ''}${parsed.hash}`;
     }
     return parsed.toString();
   } catch {

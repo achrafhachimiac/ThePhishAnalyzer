@@ -267,7 +267,7 @@ describe('createBrowserSandboxJob', () => {
       provider: 'local-novnc',
       accessMode: 'embedded',
       accessBaseUrl: null,
-      accessUrlTemplate: 'https://sandbox.example.test/novnc/:novncPort/vnc.html?autoconnect=1&resize=remote',
+      accessUrlTemplate: '/novnc/:novncPort/vnc.html?autoconnect=1&resize=remote',
       accessPathTemplate: ':jobId',
       startCommandTemplate: null,
       stopCommandTemplate: null,
