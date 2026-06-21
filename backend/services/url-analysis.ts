@@ -166,7 +166,7 @@ export async function analyzeUrlWithPlaywright(
   context: { jobId: string; index: number },
 ): Promise<Omit<UrlAnalysisResult, 'originalUrl'>> {
   const browser = await chromium.launch({ headless: true });
-  const browserContext = await browser.newContext();
+  const browserContext = await browser.newContext({ ignoreHTTPSErrors: true });
   const page = await browserContext.newPage();
   const redirectChain: string[] = [];
   const requestedDomains = new Set<string>();

@@ -608,7 +608,7 @@ export async function analyzeUrlInLocalSandbox(
 ): Promise<Omit<BrowserSandboxResult, 'originalUrl'>> {
   const access = context.session.access;
   const browser = await chromium.launch({ headless: true });
-  const browserContext = await browser.newContext({ acceptDownloads: true });
+  const browserContext = await browser.newContext({ acceptDownloads: true, ignoreHTTPSErrors: true });
   const page = await browserContext.newPage();
   const redirectChain: string[] = [];
   const requestedDomains = new Set<string>();
