@@ -331,9 +331,20 @@ export default function App() {
           </div>
         </main>
         
-        <footer className="mt-12 text-center text-xs opacity-50 border-t border-cyber-red-dim pt-4">
+        <footer className="mt-12 border-t border-cyber-red-dim pt-4 text-center text-xs text-cyber-red/60">
           <p>WARNING: USE FOR AUTHORIZED INVESTIGATIONS ONLY.</p>
           <p>ALL QUERIES ARE LOGGED.</p>
+          <nav className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2" aria-label="Project links">
+            <a className="hover:text-cyber-red" href="https://github.com/achrafhachimiac/ThePhishAnalyzer" target="_blank" rel="noreferrer">
+              GitHub Repository
+            </a>
+            <a className="hover:text-cyber-red" href="https://www.linkedin.com/in/achraf-hachimi-33572910b/" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <a className="hover:text-cyber-red" href="https://www.cybersec-ops.org" target="_blank" rel="noreferrer">
+              CyberSec Ops
+            </a>
+          </nav>
         </footer>
       </div>
       </div>
