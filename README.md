@@ -111,8 +111,3 @@ See `CONTRIBUTING.md` for contribution rules and `SECURITY.md` for vulnerability
 ## Security Note
 
 This tool is meant for authorized investigations only. Do not commit real secrets, private investigation samples, production credentials, screenshots, traces, or generated reports.
-
-## Credit
-
-Un grand merci à mon ami et collègue Frédérick FLAO ! C'est lui qui a eu l'étincelle initiale et le concept de base de cet outil. Même si nos chemins de dev se sont séparés en route, c'est sa vision qui a inspiré tout ce projet.
-
